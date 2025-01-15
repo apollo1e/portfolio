@@ -14,7 +14,7 @@
             <a href="#" class="image avatar"><img src="images/fulls/embeddedsystem.png" alt="" /></a>
             <h1><strong>Automated Hydroponics System Using Raspberry Pi Pico and C</strong><br />
            </h1>
-            <p>This project focuses on creating a fully automated hydroponics system by utilizing multiple sensors and Raspberry Pi Pico boards programmed in C, ensuring optimal plant growth through precise environmental control. The project achieves this by leveraging MQTT for communication between Picos, enabling distributed processing and seamless data exchange. The architecture consists of three interconnected Raspberry Pi Pico boards, each responsible for handling specific sensors and tasks, ensuring scalability, modularity, and efficient control of environmental parameters.</p>
+            <p>This project focuses on creating a fully automated hydroponics system by utilizing multiple sensors and Raspberry Pi Pico boards programmed in C, ensuring optimal plant growth through precise environmental control. The project achieves this by leveraging MQTT for communication between Picos, enabling distributed processing and seamless data exchange. The architecture consists of three interconnected Raspberry Pi Pico boards, each responsible for handling specific sensors and tasks, ensuring scalability, modularity, and efficient control of environmental parameters. Each new Pico W that joins the system dynamically synchronizes with the master Pico by identifying itself through a dedicated MQTT topic, allowing it to receive commands and configuration updates in real time.</p>
         </div>
     </header>
 
@@ -51,6 +51,17 @@
                 <li><strong>Soil Moisture Sensor:</strong> Measures soil moisture to regulate water delivery based on plant needs.</li>
             </ul>
 
+            <h4>System Architecture 💻</h4>
+            <img src="images/embeddedMQTT.png" alt="Hydroponics System Architecture" />
+            <p>The diagram above illustrates the overall architecture of the hydroponics system. It consists of multiple Raspberry Pi Pico boards, each dedicated to specific functions:</p>
+            <ul>
+                <li><strong>Pico A:</strong> Handles plant monitoring tasks by reading data from sensors such as the CO2 sensor and Mikroe Spectrometer Click. It publishes sensor readings via MQTT topics for CO2 levels, light intensity, and LED control.</li>
+                <li><strong>Pico B:</strong> Responsible for wind control. It uses an air velocity sensor to monitor airflow and activates a fan when required. Data is shared via MQTT topics related to airflow.</li>
+                <li><strong>Pico C:</strong> Manages water supply by controlling a water pump. It uses a relay module to regulate the water flow based on soil moisture levels, publishing and subscribing to relevant MQTT topics.</li>
+                <li><strong>Pico D:</strong> Acts as the main controller, subscribing to all topics and making decisions based on the data received. It coordinates actions such as activating the water pump or fan by publishing commands to the respective Pico boards.</li>
+            </ul>
+            <p>The architecture leverages MQTT for efficient communication, ensuring that each Pico W operates in sync with the system. Additionally, the modular design allows for easy expansion, where new Picos can dynamically join the network by identifying themselves through dedicated MQTT topics and receiving configuration updates from the master Pico. This setup enhances scalability, fault tolerance, and energy efficiency.</p>
+
             <h4>System Configuration Flow 🤖</h4>
             <p>The project begins with an interactive terminal interface on a connected MacBook Pro:</p>
             <ol>
@@ -76,6 +87,7 @@
             <ul>
                 <li><strong>Publishers and Subscribers:</strong> Each Pico acts as both a publisher and a subscriber, enabling them to exchange sensor data and configuration information seamlessly.</li>
                 <li><strong>Topics:</strong> CO2 levels, light intensity, air velocity, soil moisture, water pump control, and fan control are published as topics for the Picos to act upon.</li>
+                <li><strong>Dynamic Pico Integration:</strong> Each new Pico W that joins the system publishes an identification message to a specific MQTT topic. The master Pico responds by sending the necessary configuration and command topics, ensuring that the new Pico can immediately begin operating in sync with the system.</li>
             </ul>
 
             <h4>Power Management 🔦</h4>
@@ -90,6 +102,7 @@
                 <li><strong>Relay Control Logic:</strong> Based on sensor data, the relay module triggers the water pump and fan.</li>
                 <li><strong>Power Management Logic:</strong> Low-power modes were implemented by controlling the Pico's sleep cycles and sensor duty cycles, ensuring energy efficiency without compromising performance.</li>
                 <li><strong>Configuration Handling:</strong> Each Pico stores the selected plant configuration locally. Upon receiving data from subscribed topics or their own sensors, the Picos compare the readings with the configuration and take necessary actions.</li>
+                <li><strong>Dynamic Pico Synchronization:</strong> New Picos can join the ecosystem dynamically by identifying themselves through MQTT. The master Pico assigns tasks and configuration settings, ensuring that the new devices integrate seamlessly with the existing setup.</li>
             </ul>
 
             <h3>The Final Product</h3>
