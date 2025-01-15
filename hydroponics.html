@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hydroponics Automation System - Project Details</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="#" class="image avatar"><img src="images/fulls/embeddedsystem.png" alt="" /></a>
+            <h1><strong>Automated Hydroponics System Using Raspberry Pi Pico and C</strong><br />
+           </h1>
+            <p>This project focuses on creating a fully automated hydroponics system by utilizing multiple sensors and Raspberry Pi Pico boards programmed in C, ensuring optimal plant growth through precise environmental control. The project achieves this by leveraging MQTT for communication between Picos, enabling distributed processing and seamless data exchange. The architecture consists of three interconnected Raspberry Pi Pico boards, each responsible for handling specific sensors and tasks, ensuring scalability, modularity, and efficient control of environmental parameters.</p>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+        <section>
+            <header class="major">
+                <h2>Introduction</h2>
+            </header>
+            <p>Welcome to the Automated Hydroponics System project! The aim of this project was to build an efficient, scalable, and modular hydroponics system. By integrating various sensors and using MQTT for communication, we ensured real-time monitoring and control of critical environmental factors.</p>
+
+            <h3>What You'll Need 🛠️</h3>
+            <p>Before getting started, make sure you have the following hardware and software:</p>
+            <ul>
+                <li>Raspberry Pi Pico boards (3 units)</li>
+                <li>CO2 Sensor (SCD41)</li>
+                <li>Mikroe Spectrometer Click (AS7341)</li>
+                <li>SparkFun Air Velocity Sensor Breakout (FS3000-1005)</li>
+                <li>Soil Moisture Sensor</li>
+                <li>1-Channel Relay Module</li>
+                <li>C programming knowledge and a suitable IDE</li>
+                <li>MQTT broker for communication</li>
+            </ul>
+
+            <h3>The Building Blocks 🚀</h3>
+            <p>The system is designed by distributing tasks across multiple Raspberry Pi Pico boards, each connected to a different set of sensors:</p>
+
+            <h4>Sensor Integration 🔢</h4>
+            <p>Each sensor plays a crucial role in ensuring optimal growing conditions:</p>
+            <ul>
+                <li><strong>CO2 Sensor (SCD41):</strong> Measures carbon dioxide levels to optimize photosynthesis.</li>
+                <li><strong>Mikroe Spectrometer Click (AS7341):</strong> Monitors light intensity across various wavelengths to regulate artificial lighting.</li>
+                <li><strong>SparkFun Air Velocity Sensor (FS3000-1005):</strong> Measures air velocity to ensure proper ventilation and prevent stagnant air.</li>
+                <li><strong>Soil Moisture Sensor:</strong> Measures soil moisture to regulate water delivery based on plant needs.</li>
+            </ul>
+
+            <h4>System Configuration Flow 🤖</h4>
+            <p>The project begins with an interactive terminal interface on a connected MacBook Pro:</p>
+            <ol>
+                <li>The farmer is prompted to select the power mode:
+                    <ul>
+                        <li><strong>Mode 1:</strong> Low power mode - All sensors and Picos operate with minimal power consumption.</li>
+                        <li><strong>Mode 2:</strong> Normal mode - Full performance with no power restrictions.</li>
+                    </ul>
+                </li>
+                <li>Next, the farmer selects a plant configuration from predefined options. Each configuration file specifies the optimal environmental conditions for that plant (e.g., temperature, soil moisture, light intensity).</li>
+                <li>Once the selections are made, the Picos store the configuration values locally and begin monitoring their respective sensors. If any sensor data deviates from the configured thresholds, appropriate actions are triggered, such as activating the fan or stopping the water pump.</li>
+            </ol>
+
+            <h4>Relay Control ⚖️</h4>
+            <p>The relay module controls the water pump and fan:</p>
+            <ul>
+                <li><strong>Water Pump:</strong> Delivers water and nutrients directly to the plant roots. If soil moisture exceeds a set threshold, the pump is stopped to prevent overwatering.</li>
+                <li><strong>Fan:</strong> Maintains proper air circulation to prevent mould and improve air quality. If temperature exceeds the configured limit, the fan is activated to cool the environment.</li>
+            </ul>
+
+            <h4>Communication Protocol 📢</h4>
+            <p>MQTT is used as the communication protocol between the Raspberry Pi Pico boards:</p>
+            <ul>
+                <li><strong>Publishers and Subscribers:</strong> Each Pico acts as both a publisher and a subscriber, enabling them to exchange sensor data and configuration information seamlessly.</li>
+                <li><strong>Topics:</strong> CO2 levels, light intensity, air velocity, soil moisture, water pump control, and fan control are published as topics for the Picos to act upon.</li>
+            </ul>
+
+            <h4>Power Management 🔦</h4>
+            <p>Low power mode features were incorporated into the Raspberry Pi Pico W boards and the sensors to enhance energy efficiency. Each Pico was programmed to enter low-power mode when idle, and the sensors were also configured to operate in low-power mode when continuous monitoring was not required. This approach ensures that the overall energy consumption of the system is minimized, making it sustainable for long-term use.</p>
+            <p>The project also allows farmers to select different power configurations based on their specific needs. This flexibility ensures that farmers can prioritize either performance or energy efficiency depending on the stage of plant growth and environmental conditions.</p>
+
+            <h3>Code Implementation 💻</h3>
+            <p>The system is programmed in C, with each Pico handling a specific task. Here are the key components:</p>
+            <ul>
+                <li><strong>Sensor Drivers:</strong> Custom drivers were developed to interface with each sensor.</li>
+                <li><strong>MQTT Communication:</strong> Implemented using lightweight MQTT libraries to enable seamless data exchange.</li>
+                <li><strong>Relay Control Logic:</strong> Based on sensor data, the relay module triggers the water pump and fan.</li>
+                <li><strong>Power Management Logic:</strong> Low-power modes were implemented by controlling the Pico's sleep cycles and sensor duty cycles, ensuring energy efficiency without compromising performance.</li>
+                <li><strong>Configuration Handling:</strong> Each Pico stores the selected plant configuration locally. Upon receiving data from subscribed topics or their own sensors, the Picos compare the readings with the configuration and take necessary actions.</li>
+            </ul>
+
+            <h3>The Final Product</h3>
+            <p>The final product is a robust and scalable hydroponics system that can be easily expanded by adding more sensors or control units. This modular approach ensures that the system remains efficient and easy to maintain while supporting optimal plant growth. Additionally, the customizable power configurations provide flexibility for farmers, enabling them to optimize the system according to their specific operational requirements.</p>
+        </section>
+    </div>
+
+</body>
+</html>
