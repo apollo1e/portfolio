@@ -12,7 +12,7 @@
     <header id="header">
         <div class="inner">
             <a href="#" class="image avatar"><img src="images/fulls/embeddedsystem.png" alt="" /></a>
-            <h1><strong>Automated Hydroponics System Using Raspberry Pi Pico </strong><br />
+            <h1><strong>Automated Hydroponics System with Raspberry Pi Pico </strong><br />
            </h1>
             <p>This project focuses on creating a fully automated hydroponics system by utilizing multiple sensors and Raspberry Pi Pico boards programmed in C, ensuring optimal plant growth through precise environmental control. The project achieves this by leveraging MQTT for communication between Picos, enabling distributed processing and seamless data exchange. The architecture consists of three interconnected Raspberry Pi Pico boards, 
                 each responsible for handling specific sensors and tasks, ensuring scalability, modularity, and efficient control of environmental parameters. Each new Pico W that joins the system dynamically synchronizes with the master Pico by identifying itself through a dedicated MQTT topic, allowing it to receive commands and configuration updates in real time.</p>
@@ -53,7 +53,7 @@
             </ul>
 
             <h4>System Architecture 💻</h4>
-            <img src="images/fulls/embeddedsystem.png" alt="Hydroponics System Architecture" />
+            <img src="images/fulls/embeddedsystem.png" alt="Hydroponics System Architecture" width="800"/>
             <p>The diagram above illustrates the overall architecture of the hydroponics system. It consists of multiple Raspberry Pi Pico boards, each dedicated to specific functions:</p>
             <ul>
                 <li><strong>Pico A:</strong> Handles plant monitoring tasks by reading data from sensors such as the CO2 sensor and Mikroe Spectrometer Click. It publishes sensor readings via MQTT topics for CO2 levels, light intensity, and LED control.</li>
