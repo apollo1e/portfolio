@@ -2036,12 +2036,19 @@ input, select, textarea {
 		}
 
 /* Image */
-
+	.hydroponics-image {
+		width: 20px;
+		height: 21px;
+		object-fit: cover; /* Ensures the image scales properly without distortion */
+		border-radius: 10px; /* Optional: same border-radius for consistency */
+	}
+	
 	.image {
 		border-radius: 0.35em;
 		border: 0;
 		display: inline-block;
 		position: relative;
+		object-fit: cover; /* Ensures the image scales properly without distortion */
 	}
 
 		.image:before {
