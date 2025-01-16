@@ -62,7 +62,7 @@
                 <li><strong>Pico D:</strong> Acts as the main controller, subscribing to all topics and making decisions based on the data received. It coordinates actions such as activating the water pump or fan by publishing commands to the respective Pico boards.</li>
             </ul>
             <p>The architecture leverages MQTT for efficient communication, ensuring that each Pico W operates in sync with the system. Additionally, the modular design allows for easy expansion, where new Picos can dynamically join the network by identifying themselves through dedicated MQTT topics and receiving configuration updates from the master Pico. This setup enhances scalability, fault tolerance, and energy efficiency.</p>
-
+            <p> Eventually, we made each pico to subscribe to each other's topic too, hence removing the need for the master pico to send out the data to all other picos. This way, we reduced a single point of failure and we made the ecosystem more robust and smart. </p>
             <h4>System Configuration Flow 🤖</h4>
             <p>The project begins with an interactive terminal interface on a connected MacBook Pro:</p>
             <ol>
